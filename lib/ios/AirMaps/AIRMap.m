@@ -162,11 +162,11 @@ const CGFloat AIRMapZoomBoundBuffer = 0.01;
 // Allow touches to be sent to our calloutview.
 // See this for some discussion of why we need to override this: https://github.com/nfarina/calloutview/pull/9
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-
+    
     UIView *calloutMaybe = [self.calloutView hitTest:[self.calloutView convertPoint:point fromView:self] withEvent:event];
     if (calloutMaybe) return calloutMaybe;
-
-    return [super hitTest:point withEvent:event];
+    
+    return ((UIView *)[((UIView *)[self.subviews objectAtIndex:0]).subviews objectAtIndex:2]);
 }
 
 #pragma mark SMCalloutViewDelegate
